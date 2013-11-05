@@ -1,4 +1,4 @@
-﻿package rwts.beans.impl;
+package rwts.beans.impl;
 
 import ru.yandex.qatools.properties.PropertyLoader;
 import ru.yandex.qatools.properties.annotations.Property;
@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 @Resource.Classpath("main.properties")
-public class OrderImpl implements Order
+public class YaOrder implements Order
 {
 
     @Property("order.station.departure")
@@ -36,7 +36,7 @@ public class OrderImpl implements Order
     @Property("order.travel.time")
     private String travelTime;
 
-    public OrderImpl()
+    public YaOrder()
     {
         PropertyLoader.populate(this);
     }
@@ -62,13 +62,13 @@ public class OrderImpl implements Order
     @Override
     public String getDepartureStation()
     {
-        return "вильнюс"; //todo
+        return departureStation; //todo
     }
 
     @Override
     public String getDestinationStation()
     {
-        return "минск"; //todo
+        return destinationStation; //todo
     }
 
     @Override

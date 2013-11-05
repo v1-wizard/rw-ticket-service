@@ -11,7 +11,7 @@ import rwts.beans.Customer;
  * Time: 19:03
  */
 @Resource.Classpath("main.properties")
-public class CustomerImpl implements Customer
+public class YaCustomer implements Customer
 {
     @Property("customer.login")
     private String login;
@@ -25,7 +25,7 @@ public class CustomerImpl implements Customer
     @Property("customer.sms-id")
     private String smsServiceId;
 
-    public CustomerImpl()
+    public YaCustomer()
     {
         PropertyLoader.populate(this);
     }
@@ -53,4 +53,12 @@ public class CustomerImpl implements Customer
     {
         return smsServiceId;
     }
+
+    public String toString()
+    {
+        return getClass().getSimpleName() + "{" +
+                "login: " + login + ";" +
+               "}";
+    }
+
 }

@@ -22,5 +22,4 @@ public interface Order
     int getCost();
 
     String getTime();
-
 }
