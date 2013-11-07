@@ -8,7 +8,10 @@ package rwts.beans;
 public interface Customer
 {
     String getLogin();
+
     String getPassword();
+
     String getPhone();
+
     String getSmsServiceId();
- }
+}

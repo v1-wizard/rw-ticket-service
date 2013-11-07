@@ -5,6 +5,6 @@ package rwts.beans.impl;
  * Date: 28.10.13
  * Time: 17:46
  */
-public class PassengerImpl
+public class YaPassenger
 {
 }

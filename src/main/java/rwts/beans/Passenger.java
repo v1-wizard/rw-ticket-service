@@ -19,8 +19,8 @@ public interface Passenger
         IDENTIFY_CARD,
         DOC_ABOUT_PASSPORT_LOST,
         PRISONER_DOC,
-        RESIDENCE_PERMIT;
-    };
+        RESIDENCE_PERMIT
+    }
 
     String getPatronymic();
 

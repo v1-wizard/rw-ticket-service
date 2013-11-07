@@ -1,8 +1,6 @@
 package rwts.pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
-import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 import rwts.beans.Order;
 import rwts.pages.blocks.WagonTypeBlock;
 
