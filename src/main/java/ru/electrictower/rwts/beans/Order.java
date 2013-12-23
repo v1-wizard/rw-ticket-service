@@ -13,6 +13,8 @@ public interface Order
 
     int getAdultPassengersNumber();
 
+    boolean isPassengersInQueue();
+
     String getTravelDate();
 
     String getDepartureStation();

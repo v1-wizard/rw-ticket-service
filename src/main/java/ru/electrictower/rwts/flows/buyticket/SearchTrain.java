@@ -47,7 +47,7 @@ public class SearchTrain extends BaseFlowUnit
         }
 
         if (attempt == MAX_ATTEMPTS_COUNT)
-            throw new FlowUnitExecutionException("Cannot find appropriate train ot tickets");
+            throw new FlowUnitExecutionException("Cannot find appropriate train or tickets");
     }
 
     private int tryToChooseRoute() {

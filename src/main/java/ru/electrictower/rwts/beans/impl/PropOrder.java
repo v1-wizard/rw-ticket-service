@@ -1,19 +1,18 @@
 package ru.electrictower.rwts.beans.impl;
 
+import ru.electrictower.rwts.beans.PropPassengersConverter;
 import ru.yandex.qatools.properties.PropertyLoader;
 import ru.yandex.qatools.properties.annotations.Property;
 import ru.yandex.qatools.properties.annotations.Resource;
 import ru.electrictower.rwts.beans.Order;
 import ru.electrictower.rwts.beans.Passenger;
+import ru.yandex.qatools.properties.annotations.Use;
 
 import java.util.List;
 
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 20:47
+ * @author Aliaksei Boole
  */
-
 @Resource.Classpath("main.properties")
 public class PropOrder implements Order
 {
@@ -27,14 +26,18 @@ public class PropOrder implements Order
     @Property("order.travel.date")
     private String travelDate;
 
-    @Property("order.passengers.file")
-    private String passengersFileName;
-
     @Property("order.ticket.max.cost")
-    int ticketCost;
+    private int ticketCost;
 
     @Property("order.travel.time")
     private String travelTime;
+
+    @Use(PropPassengersConverter.class)
+    @Property("order.passengers.file")
+    private List<Passenger> passengers;
+
+    @Property("order.passengers.inQueue")
+    boolean isPassengersInQueue;
 
     public PropOrder()
     {
@@ -44,13 +47,27 @@ public class PropOrder implements Order
     @Override
     public List<Passenger> getPassengers()
     {
-        return null;  //todo
+        return passengers;
     }
 
     @Override
     public int getAdultPassengersNumber()
     {
-        return 1;  //todo
+        int adultPassCount = 0;
+        for (Passenger passenger : passengers)
+        {
+            if (passenger.isAdult())
+            {
+                adultPassCount++;
+            }
+        }
+        return adultPassCount;
+    }
+
+    @Override
+    public boolean isPassengersInQueue()
+    {
+        return isPassengersInQueue;
     }
 
     @Override
@@ -62,13 +79,13 @@ public class PropOrder implements Order
     @Override
     public String getDepartureStation()
     {
-        return departureStation; //todo
+        return departureStation;
     }
 
     @Override
     public String getDestinationStation()
     {
-        return destinationStation; //todo
+        return destinationStation;
     }
 
     @Override

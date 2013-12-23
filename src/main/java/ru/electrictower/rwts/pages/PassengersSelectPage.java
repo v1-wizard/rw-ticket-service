@@ -44,7 +44,8 @@ public class PassengersSelectPage extends AbstractPage
 
     public void selectPassenger(Order order)
     {
-	    //select passanger from drop down menu. 
+	    //select passanger from drop down menu.
+        //todo
         selectPassenger.selectByIndex(4);
         agreeWithRulesCheckBox.set(true);
         nextButton.click();

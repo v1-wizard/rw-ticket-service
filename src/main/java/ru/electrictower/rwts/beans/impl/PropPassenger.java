@@ -1,10 +1,52 @@
 package ru.electrictower.rwts.beans.impl;
 
+import ru.electrictower.rwts.beans.Passenger;
+
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 17:46
+ * @author Aliaksei Boole
  */
-public class PropPassenger
+public class PropPassenger implements Passenger
 {
+    private String  firstName;
+    private String  patronymic;
+    private String  lastName;
+    private String  documentType;
+    private String  documentId;
+    private boolean isAdult;
+
+    @Override
+    public String getPatronymic()
+    {
+        return patronymic;
+    }
+
+    @Override
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    @Override
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    @Override
+    public int getDocumentTypeId()
+    {
+        return Passenger.DocumentType.valueOf(documentType).ordinal();
+    }
+
+    @Override
+    public String getDocumentId()
+    {
+        return documentId;
+    }
+
+    @Override
+    public boolean isAdult()
+    {
+        return isAdult;
+    }
 }

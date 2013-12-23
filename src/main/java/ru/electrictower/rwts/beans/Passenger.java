@@ -1,9 +1,7 @@
 package ru.electrictower.rwts.beans;
 
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 17:48
+ * @author Aliaksei Boole
  */
 public interface Passenger
 {
@@ -28,8 +26,10 @@ public interface Passenger
 
     String getLastName();
 
-    DocumentType getDocumentTypeId();
+    int getDocumentTypeId();
 
-    String getDocumentNumber();
+    String getDocumentId();
+
+    boolean isAdult();
 
 }
