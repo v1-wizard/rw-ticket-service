@@ -1,0 +1,18 @@
+[
+       {
+       "firstName"      :   "Андрей",
+       "patronymic"     :   "Андреевич",
+       "lastName"       :   "Кузькин",
+       "documentType"   :   "PASSPORT_BLR",
+       "documentId"     :   "HB1651136",
+       "isAdult"        :   true
+       },
+       {
+       "firstName"      :   "Юлия",
+       "patronymic"     :   "Андреевна",
+       "lastName"       :   "Кузькина",
+       "documentType"   :   "BIRTH_CERTIFICATE",
+       "documentId"     :   "11166677632",
+       "isAdult"        :   false
+       }
+]
