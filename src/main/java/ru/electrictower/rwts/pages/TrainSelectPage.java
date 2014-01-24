@@ -35,7 +35,6 @@ public class TrainSelectPage extends AbstractPage
     private final static int ROW_WITH_INFORMATION = 14;
     private final static int TIME_FIELD           = 5;
     private final static int COST_FIELD           = 8;
-    private final static int SELECT_CELL_J        = 1;
 
     public TrainSelectPage(WebDriver driver)
     {
@@ -59,19 +58,20 @@ public class TrainSelectPage extends AbstractPage
         }
         for (List<String> row : rows)
         {
+            correction = row.size() - ROW_WITH_INFORMATION;
             String timeString = row.get(TIME_FIELD + correction);
             if (!timeString.isEmpty())
             {
                 isGoodTime = compareTravelTimes(timeString, order.getTime());
                 if (isGoodTime)
                 {
-                    correction = row.size() - ROW_WITH_INFORMATION;
                     String costsString = row.get(COST_FIELD + correction);
                     if (isGoodCost(costsString, order))
                     {
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
                     }
+
                     costsString = row.get(COST_FIELD + correction + 1);
                     if (isGoodCost(costsString, order))
                     {
@@ -85,6 +85,28 @@ public class TrainSelectPage extends AbstractPage
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
                     }
+
+                    costsString = row.get(COST_FIELD + correction + 3);
+                    if (isGoodCost(costsString, order))
+                    {
+                        goodChoiceRowNumber = rows.indexOf(row);
+                        return true;
+                    }
+
+                    costsString = row.get(COST_FIELD + correction + 4);
+                    if (isGoodCost(costsString, order))
+                    {
+                        goodChoiceRowNumber = rows.indexOf(row);
+                        return true;
+                    }
+
+                    costsString = row.get(COST_FIELD + correction + 5);
+                    if (isGoodCost(costsString, order))
+                    {
+                        goodChoiceRowNumber = rows.indexOf(row);
+                        return true;
+                    }
+
                 }
             }
         }

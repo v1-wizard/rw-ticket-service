@@ -38,6 +38,7 @@ public class SearchTrain extends BaseFlowUnit
             {
                 trainSelectPage.selectGoodTrain();
                 trainSelectPage.clickNext();
+                break;
             }
             else
             {
