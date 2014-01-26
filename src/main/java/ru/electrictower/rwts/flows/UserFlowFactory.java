@@ -25,7 +25,7 @@ public class UserFlowFactory
                 new GoToTrainSearch(customer, webDriver),
                 new SearchTrain(trip, webDriver),
                 new SelectPlace(trip, passenger, webDriver),
-                new PurchaseOrder(webDriver)
+                new PurchaseOrder(customer, webDriver)
         ));
 
         return searchAndBuyFlow;

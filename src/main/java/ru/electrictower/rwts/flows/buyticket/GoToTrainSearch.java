@@ -8,11 +8,11 @@ import ru.electrictower.rwts.pages.RulesPage;
 
 /**
  * @author Serj Sintsov
- * @since  11/5/13 8:58 PM
+ * @since 11/5/13 8:58 PM
  */
 public class GoToTrainSearch extends BaseFlowUnit
 {
-    private HomePage homePage;
+    private HomePage  homePage;
     private RulesPage rulesPage;
 
     private Customer customer;
@@ -31,11 +31,16 @@ public class GoToTrainSearch extends BaseFlowUnit
         homePage.login(customer, true);
 
         if (!homePage.isLogin())
+        {
             throw new FlowUnitExecutionException("Cannot login customer [%s]", customer);
+        }
 
         rulesPage.confirmWithRules();
     }
 
     @Override
-    public boolean isMandatory() { return true; }
+    public boolean isMandatory()
+    {
+        return true;
+    }
 }

@@ -48,10 +48,13 @@ public class SearchTrain extends BaseFlowUnit
         }
 
         if (attempt == MAX_ATTEMPTS_COUNT)
+        {
             throw new FlowUnitExecutionException("Cannot find appropriate train or tickets");
+        }
     }
 
-    private int tryToChooseRoute() {
+    private int tryToChooseRoute()
+    {
         int attempt = 0;
 
         while (attempt < MAX_ATTEMPTS_COUNT && !routeChoosePage.searchPossibleRoute(trip))
@@ -63,7 +66,8 @@ public class SearchTrain extends BaseFlowUnit
         return attempt;
     }
 
-    private void sleep(long ms) {
+    private void sleep(long ms)
+    {
         try
         {
             Thread.sleep(ms);
@@ -75,5 +79,8 @@ public class SearchTrain extends BaseFlowUnit
     }
 
     @Override
-    public boolean isMandatory() { return true; }
+    public boolean isMandatory()
+    {
+        return true;
+    }
 }

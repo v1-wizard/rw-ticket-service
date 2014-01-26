@@ -5,7 +5,7 @@ import ru.electrictower.rwts.flows.FlowUnitExecutionException;
 
 /**
  * @author Serj Sintsov
- * @since  11/5/13 8:58 PM
+ * @since 11/5/13 8:58 PM
  */
 public abstract class BaseFlowUnit implements FlowUnit
 {

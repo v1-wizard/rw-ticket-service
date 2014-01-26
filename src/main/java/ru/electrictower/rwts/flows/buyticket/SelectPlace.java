@@ -8,16 +8,15 @@ import ru.electrictower.rwts.pages.PassengersSelectPage;
 import ru.electrictower.rwts.pages.WagonSelectPage;
 
 /**
- *
  * @author Serj Sintsov
- * @since  11/5/13 8:58 PM
+ * @since 11/5/13 8:58 PM
  */
 public class SelectPlace extends BaseFlowUnit
 {
     private WagonSelectPage      wagonSelectPage;
     private PassengersSelectPage passengersSelectPage;
 
-    private Trip trip;
+    private Trip      trip;
     private Passenger passenger;
 
     public SelectPlace(Trip trip, Passenger passenger, WebDriver driver)
@@ -39,5 +38,6 @@ public class SelectPlace extends BaseFlowUnit
     @Override
     public boolean isMandatory()
     {
-        return true; }
+        return true;
+    }
 }
