@@ -2,12 +2,19 @@ package ru.electrictower.rwts.flows;
 
 /**
  * @author Serj Sintsov
- * @since  11/5/13 10:41 PM
+ * @since 11/5/13 10:41 PM
  */
-public class FlowUnitExecutionException extends Exception {
+public class FlowUnitExecutionException extends Exception
+{
 
-    public FlowUnitExecutionException(String msg, Object... params) {
+    public FlowUnitExecutionException(String msg, Object... params)
+    {
         super(String.format(msg, params));
+    }
+
+    public FlowUnitExecutionException(String message, Exception e)
+    {
+        super(message, e);
     }
 
 }

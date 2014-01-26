@@ -6,6 +6,8 @@ import ru.electrictower.rwts.flows.FlowUnitExecutionException;
 import ru.electrictower.rwts.pages.RouteChoosePage;
 import ru.electrictower.rwts.pages.TrainSelectPage;
 
+import java.text.ParseException;
+
 /**
  * @author Serj Sintsov
  * @since 11/5/13 8:58 PM
@@ -34,16 +36,23 @@ public class SearchTrain extends BaseFlowUnit
         {
             tryToChooseRoute();
 
-            if (trainSelectPage.selectTrain(trip))
+            try
             {
-                trainSelectPage.selectGoodTrain();
-                trainSelectPage.clickNext();
-                break;
+                if (trainSelectPage.selectTrain(trip))
+                {
+                    trainSelectPage.selectGoodTrain();
+                    trainSelectPage.clickNext();
+                    break;
+                }
+                else
+                {
+                    trainSelectPage.backToRouteChoosePage();
+                    System.out.println("No ticket");
+                }
             }
-            else
+            catch (ParseException e)
             {
-                trainSelectPage.backToRouteChoosePage();
-                System.out.println("No ticket");
+                throw new FlowUnitExecutionException("Can't parse trip time", e);
             }
         }
 

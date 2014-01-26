@@ -58,7 +58,7 @@ public class CodePage extends AbstractPage
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
+        System.out.println("Sending 'GET' request to URL : " + url);
         System.out.println("Response Code : " + responseCode);
     }
 }

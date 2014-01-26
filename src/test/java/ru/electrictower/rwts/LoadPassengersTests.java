@@ -4,15 +4,12 @@ import org.junit.Assert;
 import org.junit.Test;
 import ru.electrictower.rwts.beans.Passenger;
 import ru.electrictower.rwts.beans.PassengersList;
-import ru.electrictower.rwts.beans.impl.PropTrip;
 import ru.electrictower.rwts.testdata.TestPropPassengerList;
-
-import java.util.List;
 
 /**
  * @author Aliaksei Boole
  */
-public class LoadPassengersTest extends Assert
+public class LoadPassengersTests extends Assert
 {
 
     @Test

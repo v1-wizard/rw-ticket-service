@@ -9,6 +9,9 @@ import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.element.Table;
 import ru.electrictower.rwts.beans.Trip;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,9 +33,11 @@ public class TrainSelectPage extends AbstractPage
     private int       goodChoiceRowNumber;
     private WebDriver driver;
 
-    private final static int ROW_WITH_INFORMATION = 14;
-    private final static int TIME_FIELD           = 5;
-    private final static int COST_FIELD           = 8;
+    private final static int ROW_WITH_INFORMATION   = 14;
+    private final static int TIME_FIELD             = 5;
+    private final static int COST_FIELD             = 8;
+    private final static int LOWER_TIME_LIMIT_INDEX = 0;
+    private final static int UPPER_TIME_LIMIT_INDEX = 1;
 
     public TrainSelectPage(WebDriver driver)
     {
@@ -40,7 +45,7 @@ public class TrainSelectPage extends AbstractPage
         this.driver = driver;
     }
 
-    public boolean selectTrain(Trip trip)
+    public boolean selectTrain(Trip trip) throws ParseException
     {
         boolean isGoodTime = false;
         int correction = 0;
@@ -111,11 +116,39 @@ public class TrainSelectPage extends AbstractPage
         return false;
     }
 
-    private boolean compareTravelTimes(String actualTime, String expectedTime)
+    protected boolean compareTravelTimes(String actualTime, String expectedTime) throws ParseException
     {
-        String actualHours = actualTime.split(":")[0];
-        String expectedHours = expectedTime.split(":")[0];
-        return Integer.valueOf(actualHours) >= Integer.valueOf(expectedHours);
+        if (expectedTime.contains("-"))
+        {
+            String[] timeLimits = expectedTime.split("-");
+            return (
+                    compareTime(actualTime, timeLimits[UPPER_TIME_LIMIT_INDEX]) <= 0 &&
+                            compareTime(actualTime, timeLimits[LOWER_TIME_LIMIT_INDEX]) >= 0
+            );
+        }
+        else
+        {
+            return compareTime(actualTime, expectedTime) == 0;
+        }
+    }
+
+    private int compareTime(String actualTimeStr, String expectedTimeStr) throws ParseException
+    {
+        SimpleDateFormat parser = new SimpleDateFormat("HH:mm");
+        Date actualTime = parser.parse(actualTimeStr);
+        Date expectedTime = parser.parse(expectedTimeStr);
+        if (actualTime.after(expectedTime))
+        {
+            return 1;
+        }
+        else if (actualTime.before(expectedTime))
+        {
+            return -1;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     private boolean isGoodCost(String costsString, Trip trip)
