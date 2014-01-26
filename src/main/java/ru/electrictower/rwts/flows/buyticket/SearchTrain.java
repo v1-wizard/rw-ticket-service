@@ -1,7 +1,7 @@
 package ru.electrictower.rwts.flows.buyticket;
 
 import org.openqa.selenium.WebDriver;
-import ru.electrictower.rwts.beans.Order;
+import ru.electrictower.rwts.beans.Trip;
 import ru.electrictower.rwts.flows.FlowUnitExecutionException;
 import ru.electrictower.rwts.pages.RouteChoosePage;
 import ru.electrictower.rwts.pages.TrainSelectPage;
@@ -16,13 +16,13 @@ public class SearchTrain extends BaseFlowUnit
 
     private TrainSelectPage trainSelectPage;
     private RouteChoosePage routeChoosePage;
-    private Order order;
+    private Trip            trip;
 
-    public SearchTrain(Order order, WebDriver driver)
+    public SearchTrain(Trip trip, WebDriver driver)
     {
         routeChoosePage = new RouteChoosePage(driver);
         trainSelectPage = new TrainSelectPage(driver);
-        this.order = order;
+        this.trip = trip;
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SearchTrain extends BaseFlowUnit
         {
             tryToChooseRoute();
 
-            if (trainSelectPage.selectTrain(order))
+            if (trainSelectPage.selectTrain(trip))
             {
                 trainSelectPage.selectGoodTrain();
                 trainSelectPage.clickNext();
@@ -54,7 +54,7 @@ public class SearchTrain extends BaseFlowUnit
     private int tryToChooseRoute() {
         int attempt = 0;
 
-        while (attempt < MAX_ATTEMPTS_COUNT && !routeChoosePage.searchPossibleRoute(order))
+        while (attempt < MAX_ATTEMPTS_COUNT && !routeChoosePage.searchPossibleRoute(trip))
         {
             attempt++;
             sleep(1000);

@@ -5,9 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.TextBlock;
 
 /**
- * User: aliaksei.bul
- * Date: 29.10.13
- * Time: 22:57
+ * @author Aliaksei Boole
  */
 public class CodePage extends AbstractPage
 {

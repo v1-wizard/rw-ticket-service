@@ -7,14 +7,8 @@ import java.util.List;
  * Date: 28.10.13
  * Time: 20:35
  */
-public interface Order
+public interface Trip
 {
-    List<Passenger> getPassengers();
-
-    int getAdultPassengersNumber();
-
-    boolean isPassengersInQueue();
-
     String getTravelDate();
 
     String getDepartureStation();

@@ -5,9 +5,7 @@ import ru.electrictower.rwts.beans.Customer;
 import ru.electrictower.rwts.pages.blocks.LoginBlock;
 
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 17:39
+ * @author Aliaksei Boole
  */
 public class HomePage extends AbstractPage
 {

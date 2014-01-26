@@ -5,9 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.Button;
 
 /**
- * User: aliaksei.bul
- * Date: 29.10.13
- * Time: 22:42
+ * @author Aliaksei Boole
  */
 public class PayPage extends AbstractPage
 {

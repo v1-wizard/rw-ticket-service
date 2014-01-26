@@ -6,9 +6,7 @@ import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.CheckBox;
 
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 19:31
+ * @author Aliaksei Boole
  */
 public class RulesPage  extends AbstractPage
 {

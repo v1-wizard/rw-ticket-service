@@ -1,14 +1,12 @@
 package ru.electrictower.rwts.pages.blocks;
 
 import org.openqa.selenium.support.FindBy;
+import ru.electrictower.rwts.beans.Trip;
 import ru.yandex.qatools.htmlelements.annotations.Block;
 import ru.yandex.qatools.htmlelements.annotations.Name;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextBlock;
-import ru.electrictower.rwts.beans.Order;
-
-import java.util.List;
 
 /**
  * @author Aliaksei Boole
@@ -25,10 +23,10 @@ public class WagonTypeBlock extends HtmlElement
     @FindBy(xpath = ".//input[contains(@id,'button1')]")
     private Button selectButton;
 
-    public boolean isGoodCost(Order order)
+    public boolean isGoodCost(Trip trip)
     {
         int costActual = Integer.valueOf(cost.getText().replace(" ", ""));
-        return costActual <= order.getCost();
+        return costActual <= trip.getCost();
     }
 
     public void clickSelect()

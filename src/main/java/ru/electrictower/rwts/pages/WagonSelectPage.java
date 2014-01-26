@@ -1,15 +1,13 @@
 package ru.electrictower.rwts.pages;
 
 import org.openqa.selenium.WebDriver;
-import ru.electrictower.rwts.beans.Order;
+import ru.electrictower.rwts.beans.Trip;
 import ru.electrictower.rwts.pages.blocks.WagonTypeBlock;
 
 import java.util.List;
 
 /**
- * User: aliaksei.bul
- * Date: 29.10.13
- * Time: 20:33
+ * @author Aliaksei Boole
  */
 public class WagonSelectPage extends AbstractPage
 {
@@ -21,11 +19,11 @@ public class WagonSelectPage extends AbstractPage
         super(driver);
     }
 
-    public void selectWagon(Order order)
+    public void selectWagon(Trip trip)
     {
         for (WagonTypeBlock wagonTypeBlock : wagonTypeBlocks)
         {
-            if (wagonTypeBlock.isGoodCost(order))
+            if (wagonTypeBlock.isGoodCost(trip))
             {
                 wagonTypeBlock.clickSelect();
                 break;

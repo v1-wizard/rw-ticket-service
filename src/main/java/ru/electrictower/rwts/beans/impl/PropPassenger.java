@@ -12,7 +12,6 @@ public class PropPassenger implements Passenger
     private String  lastName;
     private String  documentType;
     private String  documentId;
-    private boolean isAdult;
 
     @Override
     public String getPatronymic()
@@ -42,11 +41,5 @@ public class PropPassenger implements Passenger
     public String getDocumentId()
     {
         return documentId;
-    }
-
-    @Override
-    public boolean isAdult()
-    {
-        return isAdult;
     }
 }

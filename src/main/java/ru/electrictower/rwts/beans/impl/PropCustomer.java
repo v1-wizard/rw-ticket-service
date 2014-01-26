@@ -10,7 +10,7 @@ import ru.electrictower.rwts.beans.Customer;
  * Date: 28.10.13
  * Time: 19:03
  */
-@Resource.Classpath("main.properties")
+@Resource.Classpath("conf.properties")
 public class PropCustomer implements Customer
 {
     @Property("customer.login")
@@ -25,7 +25,9 @@ public class PropCustomer implements Customer
     @Property("customer.sms-id")
     private String smsServiceId;
 
-    public PropCustomer()
+    public final static PropCustomer INSTANCE = new PropCustomer();
+
+    private PropCustomer()
     {
         PropertyLoader.populate(this);
     }

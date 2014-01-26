@@ -2,16 +2,15 @@ package ru.electrictower.rwts.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ru.electrictower.rwts.beans.Passenger;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.CheckBox;
 import ru.yandex.qatools.htmlelements.element.Select;
 import ru.yandex.qatools.htmlelements.element.TextInput;
-import ru.electrictower.rwts.beans.Order;
+import ru.electrictower.rwts.beans.Trip;
 
 /**
- * User: aliaksei.bul
- * Date: 29.10.13
- * Time: 22:17
+ * @author Aliaksei Boole
  */
 public class PassengersSelectPage extends AbstractPage
 {
@@ -42,7 +41,7 @@ public class PassengersSelectPage extends AbstractPage
         super(driver);
     }
 
-    public void selectPassenger(Order order)
+    public void selectPassenger(Passenger passenger)
     {
 	    //select passanger from drop down menu.
         //todo

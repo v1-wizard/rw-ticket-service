@@ -7,9 +7,7 @@ import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 18:12
+ * @author Aliaksei Boole
  */
 abstract class AbstractPage
 {

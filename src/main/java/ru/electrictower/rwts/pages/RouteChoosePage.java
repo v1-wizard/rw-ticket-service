@@ -3,16 +3,14 @@ package ru.electrictower.rwts.pages;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import ru.electrictower.rwts.beans.Trip;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.Select;
 import ru.yandex.qatools.htmlelements.element.TextBlock;
 import ru.yandex.qatools.htmlelements.element.TextInput;
-import ru.electrictower.rwts.beans.Order;
 
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 20:12
+ * @author Aliaksei Boole
  */
 public class RouteChoosePage extends AbstractPage
 {
@@ -41,15 +39,14 @@ public class RouteChoosePage extends AbstractPage
     }
 
 
-    public boolean searchPossibleRoute(Order order)
+    public boolean searchPossibleRoute(Trip trip)
     {
         departureStationField.clear();
-        departureStationField.sendKeys(order.getDepartureStation());
+        departureStationField.sendKeys(trip.getDepartureStation());
         destinationStationField.clear();
-        destinationStationField.sendKeys(order.getDestinationStation());
+        destinationStationField.sendKeys(trip.getDestinationStation());
         travelDateField.clear();
-        travelDateField.sendKeys(order.getTravelDate());
-        numberAdultPassengerSelect.selectByValue(String.valueOf(order.getAdultPassengersNumber()));
+        travelDateField.sendKeys(trip.getTravelDate());
         searchButton.click();
         return isSearchResults();
     }

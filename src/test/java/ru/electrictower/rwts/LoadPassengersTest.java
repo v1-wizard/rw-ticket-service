@@ -3,8 +3,9 @@ package ru.electrictower.rwts;
 import org.junit.Assert;
 import org.junit.Test;
 import ru.electrictower.rwts.beans.Passenger;
-import ru.electrictower.rwts.beans.impl.PropOrder;
-import ru.electrictower.rwts.testdata.PropOrderWithOverrideFrom;
+import ru.electrictower.rwts.beans.PassengersList;
+import ru.electrictower.rwts.beans.impl.PropTrip;
+import ru.electrictower.rwts.testdata.TestPropPassengerList;
 
 import java.util.List;
 
@@ -17,17 +18,25 @@ public class LoadPassengersTest extends Assert
     @Test
     public void checkThatPassengerConverterWork()
     {
-        PropOrder order = new PropOrderWithOverrideFrom();
-        List<Passenger> passengers = order.getPassengers();
-        assertTrue(passengers.size()==2);
-        Passenger father = passengers.get(0);
-        Passenger daughter = passengers.get(1);
-        assertEquals(father.getFirstName(),"Андрей");
-        assertEquals(daughter.getPatronymic(),"Андреевна");
-        assertEquals(father.getLastName(),"Кузькин");
-        assertEquals(daughter.getDocumentTypeId(),5);
-        assertEquals(father.getDocumentId(),"HB1651136");
-        assertFalse(daughter.isAdult());
+        PassengersList passengersList = new TestPropPassengerList();
+        Passenger father = passengersList.getNext();
+        Passenger daughter = passengersList.getNext();
+        assertEquals(father.getFirstName(), "Андрей");
+        assertEquals(daughter.getPatronymic(), "Андреевна");
+        assertEquals(father.getLastName(), "Кузькин");
+        assertEquals(daughter.getDocumentTypeId(), 5);
+        assertEquals(father.getDocumentId(), "HB1651136");
+    }
+
+    @Test
+    public void checkHasNextMethod()
+    {
+        PassengersList passengersList = new TestPropPassengerList();
+        Assert.assertTrue(passengersList.hasNext());
+        passengersList.getNext();
+        Assert.assertTrue(passengersList.hasNext());
+        passengersList.getNext();
+        Assert.assertFalse(passengersList.hasNext());
     }
 
 }

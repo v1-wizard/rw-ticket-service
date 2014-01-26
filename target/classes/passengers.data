@@ -4,7 +4,6 @@
        "patronymic"     :   "Вячеславович",
        "lastName"       :   "Буль",
        "documentType"   :   "PASSPORT_BLR",
-       "documentId"     :   "HB2596980",
-       "isAdult"        :   true
+       "documentId"     :   "HB2596980"
        }
 ]

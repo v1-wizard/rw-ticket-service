@@ -7,16 +7,14 @@ import org.openqa.selenium.support.FindBy;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.element.Table;
-import ru.electrictower.rwts.beans.Order;
+import ru.electrictower.rwts.beans.Trip;
 
 import java.util.Iterator;
 import java.util.List;
 
 
 /**
- * User: aliaksei.bul
- * Date: 29.10.13
- * Time: 17:41
+ * @author Aliaksei Boole
  */
 public class TrainSelectPage extends AbstractPage
 {
@@ -42,7 +40,7 @@ public class TrainSelectPage extends AbstractPage
         this.driver = driver;
     }
 
-    public boolean selectTrain(Order order)
+    public boolean selectTrain(Trip trip)
     {
         boolean isGoodTime = false;
         int correction = 0;
@@ -62,46 +60,46 @@ public class TrainSelectPage extends AbstractPage
             String timeString = row.get(TIME_FIELD + correction);
             if (!timeString.isEmpty())
             {
-                isGoodTime = compareTravelTimes(timeString, order.getTime());
+                isGoodTime = compareTravelTimes(timeString, trip.getTime());
                 if (isGoodTime)
                 {
                     String costsString = row.get(COST_FIELD + correction);
-                    if (isGoodCost(costsString, order))
+                    if (isGoodCost(costsString, trip))
                     {
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
                     }
 
                     costsString = row.get(COST_FIELD + correction + 1);
-                    if (isGoodCost(costsString, order))
+                    if (isGoodCost(costsString, trip))
                     {
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
                     }
 
                     costsString = row.get(COST_FIELD + correction + 2);
-                    if (isGoodCost(costsString, order))
+                    if (isGoodCost(costsString, trip))
                     {
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
                     }
 
                     costsString = row.get(COST_FIELD + correction + 3);
-                    if (isGoodCost(costsString, order))
+                    if (isGoodCost(costsString, trip))
                     {
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
                     }
 
                     costsString = row.get(COST_FIELD + correction + 4);
-                    if (isGoodCost(costsString, order))
+                    if (isGoodCost(costsString, trip))
                     {
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
                     }
 
                     costsString = row.get(COST_FIELD + correction + 5);
-                    if (isGoodCost(costsString, order))
+                    if (isGoodCost(costsString, trip))
                     {
                         goodChoiceRowNumber = rows.indexOf(row);
                         return true;
@@ -120,7 +118,7 @@ public class TrainSelectPage extends AbstractPage
         return Integer.valueOf(actualHours) >= Integer.valueOf(expectedHours);
     }
 
-    private boolean isGoodCost(String costsString, Order order)
+    private boolean isGoodCost(String costsString, Trip trip)
     {
         boolean isGoodCost = false;
         String[] actualCosts;
@@ -129,7 +127,7 @@ public class TrainSelectPage extends AbstractPage
             actualCosts = costsString.replace(" ", "").replace("/", "\n").split("\n");
             for (int i = 1; i < actualCosts.length; i++)
             {
-                isGoodCost = order.getCost() >= Integer.valueOf(actualCosts[i]);
+                isGoodCost = trip.getCost() >= Integer.valueOf(actualCosts[i]);
                 if (isGoodCost)
                 {
                     return isGoodCost;

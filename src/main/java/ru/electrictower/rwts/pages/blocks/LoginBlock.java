@@ -10,9 +10,7 @@ import ru.yandex.qatools.htmlelements.element.TextInput;
 import ru.electrictower.rwts.beans.Customer;
 
 /**
- * User: aliaksei.bul
- * Date: 28.10.13
- * Time: 18:19
+ * @author Aliaksei Boole
  */
 @Name("Login Form on home page")
 @Block(@FindBy(xpath = "//form[@id='login']"))

@@ -30,6 +30,4 @@ public interface Passenger
 
     String getDocumentId();
 
-    boolean isAdult();
-
 }
