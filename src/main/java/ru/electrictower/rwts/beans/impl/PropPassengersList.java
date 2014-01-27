@@ -30,6 +30,12 @@ public class PropPassengersList implements PassengersList
     }
 
     @Override
+    public List<Passenger> getPassengers()
+    {
+        return passengers;
+    }
+
+    @Override
     public Passenger getNext()
     {
         index++;
