@@ -30,7 +30,7 @@ public class PurchaseOrder extends BaseFlowUnit
     public void doExecute() throws FlowUnitExecutionException
     {
         verifyPage.clickNext();
-        payPage.clickNext();
+        payPage.next();
         codePage.sendSmsWithPayCode(customer);
         codePage.logOut();
     }
