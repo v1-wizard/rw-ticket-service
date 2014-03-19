@@ -41,15 +41,6 @@ public class PassengersSelectPage extends AbstractPage
     @FindBy(xpath = "//input[contains(@id,'pass:conf')]")
     private CheckBox agreeWithRulesCheckBox;
 
-    @FindBy(xpath = "//input[contains(@id,'nextBtn')]")
-    private Button nextButton;
-
-    private final static int FIRST_NAME_INDEX = 0;
-    private final static int LAST_NAME_INDEX  = 2;
-    private final static int PATRONYMIC_INDEX = 1;
-    private final static int DOCUMENT_ID      = 4;
-    private final static int SIZE_WITH_INFO   = 6;
-
     public PassengersSelectPage(WebDriver driver)
     {
         super(driver);
@@ -57,47 +48,8 @@ public class PassengersSelectPage extends AbstractPage
 
     public void selectPassenger(Passenger passenger)
     {
-        int passengerIndexInSelect = getPassengerIndexInSelect(passenger);
-        if (passengerIndexInSelect == -1)
-        {
-            fillPassengersInfo(passenger);
-        }
-        else
-        {
-            selectPassenger.selectByIndex(passengerIndexInSelect);
-        }
+        fillPassengersInfo(passenger);
         agreeWithRulesCheckBox.set(true);
-        nextButton.click();
-    }
-
-    private int getPassengerIndexInSelect(Passenger passenger)
-    {
-        List<String[]> passengersInfoFromSelect = getPassengersInfoFromSelect();
-        for (String[] passengerInfo : passengersInfoFromSelect)
-        {
-            if (
-                    passengerInfo.length == SIZE_WITH_INFO &&
-                            passenger.getFirstName().equalsIgnoreCase(passengerInfo[FIRST_NAME_INDEX]) &&
-                            passenger.getLastName().equalsIgnoreCase(passengerInfo[LAST_NAME_INDEX]) &&
-                            passenger.getPatronymic().equalsIgnoreCase(passengerInfo[PATRONYMIC_INDEX]) &&
-                            passenger.getDocumentId().equalsIgnoreCase(passengerInfo[DOCUMENT_ID])
-                    )
-            {
-                return passengersInfoFromSelect.indexOf(passengerInfo);
-            }
-        }
-        return -1;
-    }
-
-    private List<String[]> getPassengersInfoFromSelect()
-    {
-        List<WebElement> options = selectPassenger.getOptions();
-        List<String[]> passengerInfoFromSelect = new ArrayList<String[]>(10);
-        for (WebElement option : options)
-        {
-            passengerInfoFromSelect.add(option.getAttribute("value").split(";"));
-        }
-        return passengerInfoFromSelect;
     }
 
     private void fillPassengersInfo(Passenger passenger)

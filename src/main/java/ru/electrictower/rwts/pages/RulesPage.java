@@ -14,9 +14,6 @@ public class RulesPage  extends AbstractPage
     @FindBy(xpath = "//input[@type='checkbox']")
     private CheckBox confirmationCheckBox;
 
-    @FindBy(xpath = "//input[contains(@id,'nextBtn')]")
-    private Button nextButton;
-
     public RulesPage(WebDriver driver)
     {
         super(driver);
@@ -25,7 +22,6 @@ public class RulesPage  extends AbstractPage
     public void confirmWithRules()
     {
         confirmationCheckBox.select();
-        nextButton.click();
     }
 
 }

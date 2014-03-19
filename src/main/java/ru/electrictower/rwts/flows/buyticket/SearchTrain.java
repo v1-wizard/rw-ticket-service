@@ -41,7 +41,6 @@ public class SearchTrain extends BaseFlowUnit
                 if (trainSelectPage.selectTrain(trip))
                 {
                     trainSelectPage.selectGoodTrain();
-                    trainSelectPage.clickNext();
                     break;
                 }
                 else
