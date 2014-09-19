@@ -9,20 +9,20 @@ import ru.yandex.qatools.htmlelements.element.Link;
 /**
  * @author Aliaksei Boole
  */
-public class HomePage extends AbstractPage
-{
+public class HomePage extends AbstractPage {
     private LoginBlock loginBlock;
-    @FindBy(xpath = "//a[contains(@href,'/home/login_main/')]")
+    @FindBy(xpath = "//a[contains(@onclick,'/home/login_main/')]")
     private Link loginPageLink;
 
-    public HomePage(WebDriver driver)
-    {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public void login(Customer customer, boolean isSelected)
-    {
+    public void login(Customer customer, boolean isSelected) {
         loginPageLink.click();
+        if (loginPageLink.isDisplayed()) {
+            loginPageLink.click();
+        }
         loginBlock.login(customer, isSelected);
     }
 

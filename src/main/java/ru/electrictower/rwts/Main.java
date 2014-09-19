@@ -4,7 +4,6 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebClientOptions;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import ru.electrictower.rwts.beans.Customer;
 import ru.electrictower.rwts.beans.Passenger;
@@ -18,6 +17,7 @@ import ru.electrictower.rwts.flows.UserFlow;
 import ru.electrictower.rwts.flows.UserFlowFactory;
 
 import java.lang.reflect.Field;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Aliaksei Boole
@@ -33,14 +33,14 @@ public class Main
 
     public static void main(String[] args)
     {
+
         WebDriver driver = getWebDriver();
+        Customer customer = PropCustomer.INSTANCE;
+        Trip trip = PropTrip.INSTANCE;
+        PassengersList passengersList = PropPassengersList.INSTANCE;
 
         try
         {
-            Customer customer = PropCustomer.INSTANCE;
-            Trip trip = PropTrip.INSTANCE;
-            PassengersList passengersList = PropPassengersList.INSTANCE;
-
             NotNullValidator.checkCustomer(customer);
             NotNullValidator.checkPassengerList(passengersList);
             NotNullValidator.checkTrip(trip);
@@ -56,6 +56,7 @@ public class Main
         }
         catch (FlowExecutionException e)
         {
+            Sms.send(customer, "Rwts finish work with error!");
             e.printStackTrace();
         }
         finally
@@ -66,7 +67,7 @@ public class Main
 
     private static WebDriver getWebDriver()
     {
-        HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver(true);
+        HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver();
         try
         {
             Field field = htmlUnitDriver.getClass().getDeclaredField("webClient");
@@ -83,6 +84,7 @@ public class Main
         {
             e.printStackTrace();
         }
+        htmlUnitDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return htmlUnitDriver;
     }
 

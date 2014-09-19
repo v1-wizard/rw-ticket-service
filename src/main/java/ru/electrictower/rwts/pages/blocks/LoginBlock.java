@@ -16,16 +16,16 @@ import ru.electrictower.rwts.beans.Customer;
 @Block(@FindBy(xpath = "//form[@id='login']"))
 public class LoginBlock extends HtmlElement
 {
-    @FindBy(xpath = "//input[@id='login']")
+    @FindBy(xpath = ".//input[@id='login']")
     private TextInput loginInput;
 
-    @FindBy(xpath = "//input[@id='password']")
+    @FindBy(xpath = ".//input[@id='password']")
     private TextInput passwordInput;
 
-    @FindBy(xpath = "//input[@class='commandExButton']")
+    @FindBy(xpath = ".//input[@class='commandExButton']")
     private Button loginButton;
 
-    @FindBy(xpath = "//input[@id='rememberUser1']")
+    @FindBy(xpath = ".//input[@id='rememberUser1']")
     private CheckBox rememberCheckBox;
 
     public void login(Customer customer, boolean isRemember){

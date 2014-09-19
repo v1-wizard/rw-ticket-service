@@ -5,11 +5,9 @@ import com.google.gson.reflect.TypeToken;
 import org.apache.commons.beanutils.Converter;
 import org.apache.commons.io.IOUtils;
 import ru.electrictower.rwts.beans.Passenger;
-import ru.electrictower.rwts.beans.impl.PropPassenger;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
