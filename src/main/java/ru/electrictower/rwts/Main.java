@@ -1,10 +1,8 @@
 package ru.electrictower.rwts;
 
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.WebClientOptions;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.electrictower.rwts.beans.Customer;
 import ru.electrictower.rwts.beans.Passenger;
 import ru.electrictower.rwts.beans.PassengersList;
@@ -16,7 +14,6 @@ import ru.electrictower.rwts.flows.FlowExecutionException;
 import ru.electrictower.rwts.flows.UserFlow;
 import ru.electrictower.rwts.flows.UserFlowFactory;
 
-import java.lang.reflect.Field;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,11 +30,11 @@ public class Main
 
     public static void main(String[] args)
     {
-
-        WebDriver driver = getWebDriver();
         Customer customer = PropCustomer.INSTANCE;
         Trip trip = PropTrip.INSTANCE;
         PassengersList passengersList = PropPassengersList.INSTANCE;
+
+        WebDriver driver = getWebDriver();
 
         try
         {
@@ -67,25 +64,9 @@ public class Main
 
     private static WebDriver getWebDriver()
     {
-        HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver();
-        try
-        {
-            Field field = htmlUnitDriver.getClass().getDeclaredField("webClient");
-            field.setAccessible(true);
-            WebClient webClient = (WebClient) field.get(htmlUnitDriver);
-            WebClientOptions options = webClient.getOptions();
-            options.setThrowExceptionOnScriptError(false);
-        }
-        catch (NoSuchFieldException e)
-        {
-            e.printStackTrace();
-        }
-        catch (IllegalAccessException e)
-        {
-            e.printStackTrace();
-        }
-        htmlUnitDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return htmlUnitDriver;
+        WebDriver firefoxDriver = new FirefoxDriver();
+        firefoxDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        return firefoxDriver;
     }
 
 }
