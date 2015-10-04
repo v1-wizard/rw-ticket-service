@@ -9,18 +9,16 @@ import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 /**
  * @author Aliaksei Boole
  */
-abstract class AbstractPage
-{
-    @FindBy(xpath ="//td[@class='status']//a")
+abstract class AbstractPage {
+    @FindBy(xpath = "//td[@class='status']//a")
     private Link logOutLink;
+    protected WebDriver driver;
 
-    protected AbstractPage(WebDriver driver)
-    {
+    protected AbstractPage(WebDriver driver) {
         PageFactory.initElements(new HtmlElementDecorator(driver), this);
     }
 
-    public boolean isLogin()
-    {
-      return logOutLink.isDisplayed();
+    public boolean isLogin() {
+        return logOutLink.isDisplayed();
     }
 }
